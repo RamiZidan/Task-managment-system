@@ -7,15 +7,18 @@ const ControllersPath  = path.resolve(__dirname , '..' , 'Controllers'  ) ;
 /*-------*/
 
 /* Importing Controllers */ 
-const { createTask , editTask , deleteTask , getTask }  = require( path.resolve(ControllersPath , 'task.controller.js' ))  ;
+const TaskController  = require( path.resolve(ControllersPath , 'task.controller.js' ))  ;
+const groupMemberMiddleware = require(path.resolve(__dirname , '..' , 'Middlewares' , 'groupMember.middleware.js')) ;
+const groupAdminMiddlware = require(path.resolve(__dirname , '..' , 'Middlewares', 'groupAdmin.middleware.js')) ; 
 /*-----------------------*/
 
 
-router.post('/' , createTask ) ;
-// router.get('/' , AllTasks); // for the current group 
+router.post('/' , TaskController.createTask ) ;
+router.get('/:id' ,groupMemberMiddleware , TaskController.AllTasks); 
+router.get('/:id/:id' ,groupMemberMiddleware , TaskController.SingleTask); 
+router.delete('/:id/:id' , groupAdminMiddlware  ,TaskController.deleteTask ) ;
 // router.patch('/:id' , editTask ) ;
-// router.delete('/:id' , deleteTask ) ;
-// router.get('/:id' , getTask ) ;
+
 
 
 module.exports = router ;   

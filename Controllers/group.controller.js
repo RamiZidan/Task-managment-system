@@ -35,7 +35,7 @@ const myGroups = async function (req, res ){
 }
 
 const GroupMembers = async function (req ,res){
-    let groupId = req.body.groupId;
+    let groupId = req.params.groupId;
     let group = await Group.findOne({_id:groupId}) ;
     return res.json({memebers:group.memebers});    
 }
