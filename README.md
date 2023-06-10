@@ -1,5 +1,5 @@
-# Task-managment-system
-## A Rest-full api for Task managment 
+# Task-management-system
+## A Rest-full api for Task anagement 
 
 ### Use cases:
 1. User can create an account and login and register in the applicaton + ( editing and deleting his account settings)
